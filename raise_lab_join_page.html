@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - DePaul RAISE Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --raise-blue: #2E5BBA;
+            --community-green: #47A025;
+            --justice-gold: #F4A261;
+            --deep-charcoal: #333333;
+            --warm-white: #FEFEFE;
+            --earth-clay: #D4711C;
+            --policy-purple: #6B46C1;
+            --data-coral: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--deep-charcoal);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--raise-blue) 0%, var(--policy-purple) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--community-green), var(--justice-gold));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            position: relative;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--justice-gold);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--community-green) 0%, var(--raise-blue) 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Introduction Section */
+        .introduction {
+            padding: 80px 0;
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .introduction h2 {
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 2rem;
+        }
+
+        .introduction p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--community-green);
+            margin: 30px auto;
+            max-width: 900px;
+        }
+
+        .highlight-box h3 {
+            color: var(--raise-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Engagement Ways */
+        .engagement-ways {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .engagement-ways h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 3rem;
+        }
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .engagement-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--community-green);
+        }
+
+        .engagement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .engagement-card:nth-child(1) { border-left-color: var(--data-coral); }
+        .engagement-card:nth-child(2) { border-left-color: var(--community-green); }
+        .engagement-card:nth-child(3) { border-left-color: var(--policy-purple); }
+        .engagement-card:nth-child(4) { border-left-color: var(--raise-blue); }
+        .engagement-card:nth-child(5) { border-left-color: var(--earth-clay); }
+        .engagement-card:nth-child(6) { border-left-color: var(--justice-gold); }
+
+        .engagement-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .engagement-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .engagement-card:nth-child(1) .engagement-icon { background: var(--data-coral); }
+        .engagement-card:nth-child(2) .engagement-icon { background: var(--community-green); }
+        .engagement-card:nth-child(3) .engagement-icon { background: var(--policy-purple); }
+        .engagement-card:nth-child(4) .engagement-icon { background: var(--raise-blue); }
+        .engagement-card:nth-child(5) .engagement-icon { background: var(--earth-clay); }
+        .engagement-card:nth-child(6) .engagement-icon { background: var(--justice-gold); }
+
+        .engagement-card h3 {
+            font-size: 1.5rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 0;
+        }
+
+        .engagement-card .subtitle {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .engagement-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .engagement-card ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .engagement-card li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+        }
+
+        .engagement-card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--community-green);
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--community-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--raise-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--raise-blue);
+            border: 2px solid var(--raise-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--raise-blue);
+            color: white;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--raise-blue) 0%, var(--policy-purple) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
+        .contact-info h3 {
+            color: var(--justice-gold);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--justice-gold);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+            .engagement-header { flex-direction: column; text-align: center; }
+            .engagement-icon { margin-bottom: 10px; }
+            .nav-links { display: none; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-symbol" aria-label="RAISE Lab logo symbol"></div>
+                <div class="logo-text">
+                    <div class="logo-title">RAISE</div>
+                    <div class="logo-subtitle">Responsible AI Systems and Societal Experiences</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://raise.jaylcunningham.com/">Home</a></li>
+                <li><a href="https://raise.jaylcunningham.com/about.html">About</a></li>
+                <li><a href="https://raise.jaylcunningham.com/research.html">Research</a></li>
+                <li><a href="https://raise.jaylcunningham.com/community.html">Community</a></li>
+                <li><a href="https://raise.jaylcunningham.com/people.html">People</a></li>
+                <li><a href="https://raise.jaylcunningham.com/join.html" class="active">Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Join the Movement</h1>
+                <p>Partner with us in advancing responsible AI systems that serve the common good of humanity and the environment through community-centered research and innovation</p>
+            </div>
+        </section>
+
+        <section class="introduction">
+            <div class="container">
+                <h2>Collaborate with RAISE Lab</h2>
+                <p>
+                    The RAISE Lab is excited to engage in meaningful collaborations with researchers, practitioners, organizations, and communities who share our commitment to responsible AI development. We believe that the most impactful technology emerges from diverse partnerships that center community voices and prioritize equity.
+                </p>
+                
+                <div class="highlight-box">
+                    <h3>Our Collaboration Philosophy</h3>
+                    <p>We seek partnerships that are mutually beneficial, community-centered, and aligned with our mission of creating AI systems that are fair, culturally competent, and reflective of the values and needs of all people—especially those disproportionately affected by technology.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="engagement-ways">
+            <div class="container">
+                <h2>Ways to Engage with RAISE Lab</h2>
+                
+                <div class="engagement-grid">
+                    <div class="engagement-card">
+                        <div class="engagement-header">
+                            <div class="engagement-icon">🎓</div>
+                            <div>
+                                <h3>DePaul University Students</h3>
+                                <div class="subtitle">Direct Lab Membership</div>
+                            </div>
+                        </div>
+                        <p>
+                            Join our research team as an undergraduate, master's, or doctoral student. Work directly with Dr. Cunningham and contribute to cutting-edge research in responsible AI systems.
+                        </p>
+                        <ul>
+                            <li>Research project leadership opportunities</li>
+                            <li>Conference presentation and publication support</li>
+                            <li>Industry partnership exposure</li>
+                            <li>Community engagement experience</li>
+                            <li>Career development mentoring</li>
+                        </ul>
+                        <a href="mailto:jcunningham@depaul.edu?subject=RAISE Lab Member Application - [Your Degree Level]" class="btn btn-primary">Complete Lab Member Application</a>
+                    </div>
+
+                    <div class="engagement-card">
+                        <div class="engagement-header">
+                            <div class="engagement-icon">🌟</div>
+                            <div>
+                                <h3>Students from Other Institutions</h3>
+                                <div class="subtitle">Research Exchange & Summer Programs</div>
+                            </div>
+                        </div>
+                        <p>
+                            We welcome students from other universities to participate in collaborative research through various exchange and immersion programs.
+                        </p>
+                        <ul>
+                            <li>Research Exchange Units (REUs) and summer research programs</li>
+                            <li>Collaborative lab research projects</li>
+                            <li>RAISE Lab internship opportunities</li>
+                            <li>International student exchange programs</li>
+                            <li>Virtual research collaboration opportunities</li>
+                        </ul>
+                        <a href="mailto:jcunningham@depaul.edu?subject=Student Research Exchange Inquiry" class="btn btn-primary">Inquire About Programs</a>
+                    </div>
+
+                    <div class="engagement-card">
+                        <div class="engagement-header">
+                            <div class="engagement-icon">💼</div>
+                            <div>
+                                <h3>Industry Professionals & Researchers</h3>
+                                <div class="subtitle">Affiliate Researcher Program</div>
+                            </div>
+                        </div>
+                        <p>
+                            The RAISE Lab Affiliate Researcher Program offers a yearly affiliation for industry professionals and researchers who want to contribute to our mission while maintaining other commitments.
+                        </p>
+                        <ul>
+                            <li>Revolving scholar positions with flexible engagement</li>
+                            <li>Collaborative research project opportunities</li>
+                            <li>Access to lab resources and community</li>
+                            <li>Publication and conference collaboration</li>
+                            <li>Industry-academia bridge building</li>
+                        </ul>
+                        <a href="mailto:jcunningham@depaul.edu?subject=Affiliate Researcher Program Inquiry" class="btn btn-primary">Learn About Affiliate Program</a>
+                    </div>
+
+                    <div class="engagement-card">
+                        <div class="engagement-header">
+                            <div class="engagement-icon">🔬</div>
+                            <div>
+                                <h3>Academic & Non-Profit Researchers</h3>
+                                <div class="subtitle">Collaborative Research Partnerships</div>
+                            </div>
+                        </div>
+                        <p>
+                            We actively seek partnerships with researchers and labs whose work aligns with our focus on responsible AI, community-centered design, and social justice in technology.
+                        </p>
+                        <ul>
+                            <li>Joint research project development</li>
+                            <li>Grant proposal collaboration</li>
+                            <li>Publication and conference partnerships</li>
+                            <li>Resource and methodology sharing</li>
+                            <li>International research network building</li>
+                        </ul>
+                        <a href="mailto:jcunningham@depaul.edu?subject=Academic Collaboration Proposal" class="btn btn-primary">Propose Collaboration</a>
+                    </div>
+
+                    <div class="engagement-card">
+                        <div class="engagement-header">
+                            <div class="engagement-icon">🏢</div>
+                            <div>
+                                <h3>Industry Technology Organizations</h3>
+                                <div class="subtitle">Fiscally-Sponsored Research Projects</div>
+                            </div>
+                        </div>
+                        <p>
+                            Partner with us on fiscally-sponsored research projects that advance responsible AI practices while addressing real-world industry challenges.
+                        </p>
+                        <ul>
+                            <li>Custom research project development</li>
+                            <li>Community-informed evaluation frameworks</li>
+                            <li>Responsible AI implementation guidance</li>
+                            <li>Cultural competence assessment tools</li>
+                            <li>Policy and governance consultation</li>
+                        </ul>
+                        <a href="mailto:jcunningham@depaul.edu?subject=Industry Research Partnership Inquiry" class="btn btn-primary">Discuss Partnership</a>
+                    </div>
+
+                    <div class="engagement-card">
+                        <div class="engagement-header">
+                            <div class="engagement-icon">🤝</div>
+                            <div>
+                                <h3>Community Organizations & Advocacy Groups</h3>
+                                <div class="subtitle">Community Research Partner Program</div>
+                            </div>
+                        </div>
+                        <p>
+                            The RAISE Lab Community Research Partner Program centers community voices in our research through authentic partnerships with advocacy groups, non-profits, and community organizations.
+                        </p>
+                        <ul>
+                            <li>Community-led research project development</li>
+                            <li>Participatory research and co-design opportunities</li>
+                            <li>Technology impact assessment collaboration</li>
+                            <li>Policy advocacy and community benefit focus</li>
+                            <li>Capacity building and resource sharing</li>
+                        </ul>
+                        <a href="mailto:jcunningham@depaul.edu?subject=Community Research Partnership Inquiry" class="btn btn-primary">Join as Community Partner</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-cta">
+            <div class="container">
+                <h2>Ready to Collaborate?</h2>
+                <p>
+                    We're always excited to explore new partnerships that align with our mission of computing for the common good. Whether you're a student, researcher, organization, or community group, we'd love to hear from you.
+                </p>
+                
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p><strong>Dr. Jay L. Cunningham</strong><br>
+                    Director, DePaul RAISE Lab</p>
+                    <p><strong>Email:</strong> <a href="mailto:jcunningham@depaul.edu">jcunningham@depaul.edu</a></p>
+                    <p><strong>Location:</strong> DePaul University, College of Computing and Digital Media, Chicago, IL</p>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <a href="mailto:jcunningham@depaul.edu?subject=General RAISE Lab Inquiry" class="btn" style="background: var(--justice-gold); color: var(--deep-charcoal); margin: 0 10px 10px 0;">General Inquiry</a>
+                    <a href="index.html#research" class="btn btn-secondary">Learn About Our Research</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--deep-charcoal); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Contact</h4>
+                    <p>Jay L. Cunningham, Ph.D.<br>
+                    Director, DePaul RAISE Lab<br>
+                    jcunningham@depaul.edu</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Location</h4>
+                    <p>DePaul University<br>
+                    College of Computing and Digital Media<br>
+                    Chicago, IL</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Connect</h4>
+                    <p>
+                        <a href="#" style="color: #ccc; text-decoration: none;">LinkedIn</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">Twitter</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">GitHub</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">Publications</a>
+                    </p>
+                </div>
+            </div>
+            <p>&copy; 2025 DePaul RAISE Lab. Computing for the Common Good.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.engagement-card, .highlight-box').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - DePaul RAISE Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --raise-blue: #2E5BBA;
+            --community-green: #47A025;
+            --justice-gold: #F4A261;
+            --deep-charcoal: #333333;
+            --warm-white: #FEFEFE;
+            --earth-clay: #D4711C;
+            --policy-purple: #6B46C1;
+            --data-coral: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--deep-charcoal);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--raise-blue) 0%, var(--policy-purple) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--community-green), var(--justice-gold));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            position: relative;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--justice-gold);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--community-green) 0%, var(--raise-blue) 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,800 1000,1000"/><polygon fill="rgba(255,255,255,0.03)" points="0,800 1000,600 1000,800 0,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Community Philosophy */
+        .community-philosophy {
+            padding: 80px 0;
+            background: var(--warm-white);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .philosophy-content h2 {
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 2rem;
+        }
+
+        .philosophy-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-visual {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--community-green);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* CAB Model Section */
+        .cab-model {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .cab-model h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 3rem;
+        }
+
+        .cab-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .cab-description {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .cab-description h3 {
+            color: var(--community-green);
+            margin-bottom: 20px;
+        }
+
+        .cab-principles {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .cab-principles h3 {
+            color: var(--policy-purple);
+            margin-bottom: 20px;
+        }
+
+        .principles-list {
+            list-style: none;
+        }
+
+        .principles-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .principles-list li:last-child {
+            border-bottom: none;
+        }
+
+        .principles-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--community-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Global Partnerships */
+        .global-partnerships {
+            padding: 80px 0;
+            background: var(--warm-white);
+        }
+
+        .global-partnerships h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 3rem;
+        }
+
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .partnership-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--community-green);
+        }
+
+        .partnership-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .partnership-card h3 {
+            color: var(--raise-blue);
+            margin-bottom: 15px;
+        }
+
+        .partnership-flag {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(45deg, var(--community-green), var(--justice-gold));
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Chicago Civic Tech */
+        .chicago-civic-tech {
+            padding: 80px 0;
+            background: var(--deep-charcoal);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chicago-civic-tech::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect width="1000" height="1000" fill="%23333"/><g fill="rgba(71,160,37,0.1)"><rect x="100" y="200" width="50" height="200"/><rect x="200" y="150" width="50" height="250"/><rect x="300" y="100" width="50" height="300"/><rect x="400" y="50" width="50" height="350"/><rect x="500" y="80" width="50" height="320"/><rect x="600" y="120" width="50" height="280"/><rect x="700" y="180" width="50" height="220"/><rect x="800" y="220" width="50" height="180"/></g></svg>');
+            background-size: cover;
+        }
+
+        .chicago-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .chicago-civic-tech h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--justice-gold);
+            margin-bottom: 2rem;
+        }
+
+        .chicago-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .chicago-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .chicago-pillar {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .chicago-pillar h3 {
+            color: var(--justice-gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chicago-pillar-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Community Testimonials */
+        .community-testimonials {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .community-testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 4rem;
+            color: var(--community-green);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--raise-blue);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Call to Action */
+        .community-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--community-green) 0%, var(--raise-blue) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .community-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .community-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0 10px 10px 0;
+        }
+
+        .btn-primary {
+            background: var(--justice-gold);
+            color: var(--deep-charcoal);
+        }
+
+        .btn-primary:hover {
+            background: var(--earth-clay);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--raise-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+            .philosophy-grid, .cab-content { grid-template-columns: 1fr; gap: 2rem; }
+            .community-stats { grid-template-columns: 1fr; }
+            .chicago-pillars { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-symbol" aria-label="RAISE Lab logo symbol"></div>
+                <div class="logo-text">
+                    <div class="logo-title">RAISE</div>
+                    <div class="logo-subtitle">Responsible AI Systems and Societal Experiences</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://raise.jaylcunningham.com/">Home</a></li>
+                <li><a href="https://raise.jaylcunningham.com/about.html">About</a></li>
+                <li><a href="https://raise.jaylcunningham.com/research.html">Research</a></li>
+                <li><a href="https://raise.jaylcunningham.com/community.html" class="active">Community</a></li>
+                <li><a href="https://raise.jaylcunningham.com/people.html">People</a></li>
+                <li><a href="https://raise.jaylcunningham.com/join.html">Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Community Partnerships</h1>
+                    <p>Building authentic relationships that center community voices in responsible AI research and innovation</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-philosophy">
+            <div class="container">
+                <div class="philosophy-grid">
+                    <div class="philosophy-content">
+                        <h2>Our Community-Centered Approach</h2>
+                        <p>
+                            At RAISE Lab, we believe that the most impactful and ethical AI systems emerge from authentic partnerships with the communities they're designed to serve. We don't just study communities—we learn from them, partner with them, and ensure they lead in defining what responsible AI means.
+                        </p>
+                        <p>
+                            Our Community Advisory Board (CAB) model exemplifies this philosophy, creating structured pathways for community voices to shape research questions, methodologies, and outcomes. Every partnership is guided by principles of mutual benefit, cultural responsiveness, and community ownership.
+                        </p>
+                        <p>
+                            <strong>Community partners aren't research subjects—they're co-researchers, co-designers, and co-leaders in our mission to advance computing for the common good.</strong>
+                        </p>
+                    </div>
+                    <div class="philosophy-visual">
+                        <div class="community-stats">
+                            <div class="stat">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">Community Partners</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">5</span>
+                                <span class="stat-label">Countries Engaged</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Community Benefit Focus</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Policy Influences</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cab-model">
+            <div class="container">
+                <h2>Community Advisory Board (CAB) Model</h2>
+                <div class="cab-content">
+                    <div class="cab-description">
+                        <h3>Transforming University-Community Research</h3>
+                        <p>
+                            The Community Advisory Board model represents a fundamental shift in how universities engage with marginalized communities in technology research. Rather than extractive consultation, the CAB creates genuine power-sharing partnerships where community members have decision-making authority over research directions and outcomes.
+                        </p>
+                        <p>
+                            Developed through our work with the UW HCDE Black Community Advisory Board, this methodology ensures that research serves community needs while maintaining academic rigor. The model has been successfully implemented and is being adopted by other institutions seeking authentic community engagement.
+                        </p>
+                        <a href="mailto:jcunningham@depaul.edu?subject=CAB Model Implementation Inquiry" class="btn btn-primary">Learn About Implementation</a>
+                    </div>
+                    <div class="cab-principles">
+                        <h3>Core CAB Principles</h3>
+                        <ul class="principles-list">
+                            <li><strong>Community Leadership:</strong> Community members co-lead research design and implementation</li>
+                            <li><strong>Decision-Making Power:</strong> Real authority over research questions and methodologies</li>
+                            <li><strong>Mutual Benefit:</strong> Clear value and outcomes for community partners</li>
+                            <li><strong>Cultural Responsiveness:</strong> Research that respects and reflects community values</li>
+                            <li><strong>Sustainable Relationships:</strong> Long-term partnerships beyond individual projects</li>
+                            <li><strong>Capacity Building:</strong> Skills transfer and empowerment for community members</li>
+                            <li><strong>Transparency:</strong> Open communication about research processes and outcomes</li>
+                            <li><strong>Accountability:</strong> Community-defined success metrics and evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="global-partnerships">
+            <div class="container">
+                <h2>Global Community Partnerships</h2>
+                <div class="partnerships-grid">
+                    <div class="partnership-card">
+                        <div class="partnership-flag"></div>
+                        <h3>University of Ghana Collaboration</h3>
+                        <p>
+                            Partnership with Prof Isaac Wiafe and the Human Computer Interaction Lab, working on equitable speech recognition for Ghanaian languages including Akan, Ga, Twi, and the endangered Ikposo language.
+                        </p>
+                        <p><strong>Focus:</strong> Language preservation, cultural alignment in AI systems, hyperlocal technology development</p>
+                    </div>
+                    
+                    <div class="partnership-card">
+                        <div class="partnership-flag" style="background: linear-gradient(45deg, var(--policy-purple), var(--data-coral));"></div>
+                        <h3>Black Community Advisory Board</h3>
+                        <p>
+                            Continuing collaboration with the UW HCDE Black Community Advisory Board, serving as a model for community-centered research methodologies and university-community partnerships.
+                        </p>
+                        <p><strong>Focus:</strong> Methodology development, participatory research, community empowerment</p>
+                    </div>
+                    
+                    <div class="partnership-card">
+                        <div class="partnership-flag" style="background: linear-gradient(45deg, var(--earth-clay), var(--justice-gold));"></div>
+                        <h3>Chicago Community Organizations</h3>
+                        <p>
+                            Growing network of local Chicago community-based organizations focusing on technology equity, digital inclusion, and AI literacy in underserved communities.
+                        </p>
+                        <p><strong>Focus:</strong> Local impact, digital equity, workforce development, civic technology</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="chicago-civic-tech">
+            <div class="container chicago-content">
+                <h2>Chicago Civic-Tech Engagement</h2>
+                <div class="chicago-intro">
+                    <p>
+                        The RAISE Lab, College of Computing and Digital Media, and DePaul University are committed to strong civic engagement in our research, innovations, teaching, and impact. We are on a mission to re-define the tech landscape for Chicago locally toward impact on a national and global scale.
+                    </p>
+                </div>
+                
+                <div class="chicago-pillars">
+                    <div class="chicago-pillar">
+                        <h3><span class="chicago-pillar-icon">🏛️</span>Community Action & Advocacy</h3>
+                        <p>
+                            We're excited for opportunities to support local community action, research, and advocacy on issues pertaining to technology. Our lab serves as a bridge between academic research and grassroots organizing for technology justice.
+                        </p>
+                    </div>
+                    
+                    <div class="chicago-pillar">
+                        <h3><span class="chicago-pillar-icon">💼</span>Workforce Development</h3>
+                        <p>
+                            We hope to contribute to Chicago's emerging technology workforce, looking for opportunities to create pathways for community members to compete for jobs and launch innovative ventures in the responsible AI space.
+                        </p>
+                    </div>
+                    
+                    <div class="chicago-pillar">
+                        <h3><span class="chicago-pillar-icon">⚖️</span>AI Policy and Regulatory Governance</h3>
+                        <p>
+                            The RAISE lab is well equipped to contribute to the rapidly-growing technology policy and governance landscape. We provide research, policy guidance, and expert analysis to help elected officials responsibly shape AI policy. We actively collaborate with academic researchers, community residents, legal professionals, and business leaders on AI policy expertise.
+                        </p>
+                    </div>
+                    
+                    <div class="chicago-pillar">
+                        <h3><span class="chicago-pillar-icon">🌆</span>Local Innovation Ecosystem</h3>
+                        <p>
+                            By centering Chicago's diverse communities in our research, we aim to create technology solutions that reflect the city's values while contributing to national and global conversations about responsible AI.
+                        </p>
+                    </div>
+                    
+                    <div class="chicago-pillar">
+                        <h3><span class="chicago-pillar-icon">🤝</span>Civic Partnerships</h3>
+                        <p>
+                            We actively seek partnerships with Chicago civic organizations, city government, and community groups to ensure our research serves local needs while building national models for community-centered technology.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-testimonials">
+            <div class="container">
+                <h2>Community Voices</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            The Community Advisory Board model has transformed how we approach technology research. For the first time, our community's voice isn't just heard—it's leading the conversation.
+                        </div>
+                        <div class="testimonial-author">Community Advisory Board Member</div>
+                        <div class="testimonial-role">UW HCDE Black CAB</div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            This partnership goes beyond traditional research. We're not just subjects—we're co-researchers working together to build AI systems that actually serve our communities.
+                        </div>
+                        <div class="testimonial-author">Mark Atta Mensah</div>
+                        <div class="testimonial-role">University of Ghana HCI Lab</div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            RAISE Lab's approach to community engagement sets a new standard. They prioritize our needs and ensure research outcomes directly benefit our community members.
+                        </div>
+                        <div class="testimonial-author">Community Research Partner</div>
+                        <div class="testimonial-role">Chicago Community Organization</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-cta">
+            <div class="container">
+                <h2>Partner with Our Community</h2>
+                <p>
+                    Whether you're a community organization, advocacy group, or individual committed to technology justice, we invite you to explore partnership opportunities with RAISE Lab.
+                </p>
+                <div>
+                    <a href="mailto:jcunningham@depaul.edu?subject=Community Partnership Inquiry" class="btn btn-primary">Become a Community Partner</a>
+                    <a href="join.html" class="btn btn-secondary">Explore All Collaboration Options</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--deep-charcoal); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Contact</h4>
+                    <p>Jay L. Cunningham, Ph.D.<br>
+                    Director, DePaul RAISE Lab<br>
+                    jcunningham@depaul.edu</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Location</h4>
+                    <p>DePaul University<br>
+                    College of Computing and Digital Media<br>
+                    Chicago, IL</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Connect</h4>
+                    <p>
+                        <a href="#" style="color: #ccc; text-decoration: none;">LinkedIn</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">Twitter</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">GitHub</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">Publications</a>
+                    </p>
+                </div>
+            </div>
+            <p>&copy; 2025 DePaul RAISE Lab. Computing for the Common Good.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.partnership-card, .testimonial, .chicago-pillar, .cab-description, .cab-principles').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

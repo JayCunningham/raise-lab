@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People - DePaul RAISE Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --raise-blue: #2E5BBA;
+            --community-green: #47A025;
+            --justice-gold: #F4A261;
+            --deep-charcoal: #333333;
+            --warm-white: #FEFEFE;
+            --earth-clay: #D4711C;
+            --policy-purple: #6B46C1;
+            --data-coral: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--deep-charcoal);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--raise-blue) 0%, var(--policy-purple) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--community-green), var(--justice-gold));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            position: relative;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--justice-gold);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--raise-blue) 0%, var(--policy-purple) 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Director Section */
+        .director-section {
+            padding: 80px 0;
+            background: var(--warm-white);
+        }
+
+        .director-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .director-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .director-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .director-content h2 {
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 1rem;
+        }
+
+        .director-title {
+            font-size: 1.3rem;
+            color: var(--earth-clay);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .director-bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .director-bio p {
+            margin-bottom: 1.5rem;
+        }
+
+        .achievements {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .achievements h3 {
+            color: var(--raise-blue);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
+            background: var(--community-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .achievement h4 {
+            font-size: 1rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 5px;
+        }
+
+        .achievement p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: var(--deep-charcoal);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-info h3 {
+            color: var(--justice-gold);
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: var(--justice-gold);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Student Opportunities */
+        .student-opportunities {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .opportunities-container {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .opportunities-container h2 {
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 1rem;
+        }
+
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .opportunity-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .opportunity-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--community-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .opportunity-card h3 {
+            font-size: 1.5rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 15px;
+        }
+
+        .opportunity-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .opportunity-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .opportunity-card li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .opportunity-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--community-green);
+            font-weight: bold;
+        }
+
+        /* Application CTA */
+        .application-cta {
+            background: linear-gradient(135deg, var(--community-green) 0%, var(--raise-blue) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .application-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .application-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0 10px 10px 0;
+        }
+
+        .btn-primary {
+            background: var(--justice-gold);
+            color: var(--deep-charcoal);
+        }
+
+        .btn-primary:hover {
+            background: var(--earth-clay);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--raise-blue);
+        }
+
+        /* PhD Recruitment Notice */
+        .phd-notice {
+            background: var(--policy-purple);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .phd-notice h3 {
+            color: var(--justice-gold);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .phd-notice p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+            .director-container { grid-template-columns: 1fr; gap: 2rem; }
+            .director-content h2 { font-size: 2rem; }
+            .achievement-grid { grid-template-columns: 1fr; }
+            .opportunities-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-symbol" aria-label="RAISE Lab logo symbol"></div>
+                <div class="logo-text">
+                    <div class="logo-title">RAISE</div>
+                    <div class="logo-subtitle">Responsible AI Systems and Societal Experiences</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://raise.jaylcunningham.com/">Home</a></li>
+                <li><a href="https://raise.jaylcunningham.com/about.html">About</a></li>
+                <li><a href="https://raise.jaylcunningham.com/research.html">Research</a></li>
+                <li><a href="https://raise.jaylcunningham.com/community.html">Community</a></li>
+                <li><a href="https://raise.jaylcunningham.com/people.html" class="active">People</a></li>
+                <li><a href="https://raise.jaylcunningham.com/join.html">Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>People</h1>
+                <p>Meet the team advancing responsible AI systems that serve communities and promote justice in computing</p>
+            </div>
+        </section>
+
+        <section class="director-section">
+            <div class="container">
+                <div class="director-container">
+                    <div class="director-image">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAH0AfQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoo
+                    <div class="director-content">
+                        <h2>Jay L. Cunningham, Ph.D.</h2>
+                        <div class="director-title">Director, DePaul RAISE Lab<br>Assistant Professor, Human-Computer Interaction</div>
+                        
+                        <div class="director-bio">
+                            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 5px solid var(--raise-blue);">
+                                <h4 style="color: var(--raise-blue); font-size: 1.1rem; margin-bottom: 15px;">Lab's Guiding Research Question</h4>
+                                <p style="font-style: italic; font-size: 1rem; line-height: 1.7; margin-bottom: 0;">
+                                    How can we equitably design and evaluate human-centered AI/ML systems, particularly natural language technologies, to ensure they are fair, culturally competent, and reflective of the values and needs of all people—especially disproportionately affected users, while addressing the technical, ethical, and societal challenges inherent in AI/ML technologies?
+                                </p>
+                            </div>
+                            
+                            <p>Dr. Jay L. Cunningham is a technology scholar-practitioner with over a decade of interdisciplinary research, public interest technology leadership, and policy advisory experience at the intersection of AI governance, data ethics, and racial equity.</p>
+                            
+                            <p>As the co-founder and CEO of AmendAI, Dr. Cunningham leads a public benefit corporation developing ethical data governance infrastructure and AI dataset certification tools specifically designed for generative AI and ML systems. At DePaul University, he directs the RAISE Lab, advancing participatory research on responsible AI and democratic data governance.</p>
+                            
+                            <p>Dr. Cunningham serves as AI Policy and Research Fellow at the Washington State Attorney General's Office, contributing to state-level AI accountability frameworks, data governance policies, and technology risk assessments. His academic research, published in premier venues such as ACL, CHI, DIS, and TOCHI, critically examines the financial and societal impacts of algorithmic harms and inequities embedded in AI/ML systems.</p>
+                            
+                            <p>He brings extensive experience convening cross-sector coalitions through his roles with the Social Science Research Council's Just Tech program, the University of Washington's HCDE Black Community Advisory Board, and partnerships with industry leaders at Google's People + AI, Apple Human-centered AI/ML, and Microsoft Research Fairness in AI.</p>
+                        </div>
+
+                        <div class="achievements">
+                            <h3>Key Achievements & Recognition</h3>
+                            <div class="achievement-grid">
+                                <div class="achievement">
+                                    <div class="achievement-icon">🎓</div>
+                                    <h4>Ph.D. HCDE</h4>
+                                    <p>University of Washington</p>
+                                </div>
+                                <div class="achievement">
+                                    <div class="achievement-icon">🏆</div>
+                                    <h4>NSF GRFP</h4>
+                                    <p>Graduate Research Fellow</p>
+                                </div>
+                                <div class="achievement">
+                                    <div class="achievement-icon">💡</div>
+                                    <h4>Gates Scholar</h4>
+                                    <p>Millennium Scholars Program</p>
+                                </div>
+                                <div class="achievement">
+                                    <div class="achievement-icon">🌟</div>
+                                    <h4>Google Award</h4>
+                                    <p>Inclusion Research</p>
+                                </div>
+                                <div class="achievement">
+                                    <div class="achievement-icon">⚖️</div>
+                                    <h4>Policy Fellow</h4>
+                                    <p>WA State Attorney General</p>
+                                </div>
+                                <div class="achievement">
+                                    <div class="achievement-icon">🚀</div>
+                                    <h4>CEO & Co-founder</h4>
+                                    <p>AmendAI</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-info">
+                            <h3>Contact Information</h3>
+                            <p><strong>Email:</strong> <a href="mailto:jcunningham@depaul.edu">jcunningham@depaul.edu</a></p>
+                            <p><strong>Office:</strong> DePaul University, College of Computing and Digital Media</p>
+                            <p><strong>Research Interests:</strong> Community-centered AI evaluation, participatory design, responsible data governance, AI policy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="student-opportunities">
+            <div class="container">
+                <div class="opportunities-container">
+                    <h2>Join Our Team</h2>
+                    <p>We're building the next generation of responsible AI researchers and practitioners. DePaul School of Computing students at all levels are welcome to apply.</p>
+                </div>
+
+                <div class="phd-notice">
+                    <h3>🎯 PhD Student Recruitment - Fall 2026</h3>
+                    <p>Dr. Cunningham will be actively recruiting PhD students for Fall 2026 admission. Interested candidates should apply to the DePaul University PhD in Computer Science program and mention RAISE Lab in their application materials.</p>
+                </div>
+
+                <div class="opportunities-grid">
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">🎓</div>
+                        <h3>Undergraduate Research (B.S.)</h3>
+                        <p>Get hands-on experience with community-centered research methods and responsible AI development.</p>
+                        <ul>
+                            <li>Research methodology training</li>
+                            <li>Community partnership experience</li>
+                            <li>Publication opportunities</li>
+                            <li>Conference presentation support</li>
+                            <li>Graduate school preparation</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">🔬</div>
+                        <h3>Master's Students (M.S.)</h3>
+                        <p>Lead research projects that bridge academic rigor with real-world community impact.</p>
+                        <ul>
+                            <li>Independent research projects</li>
+                            <li>Industry collaboration opportunities</li>
+                            <li>Policy research experience</li>
+                            <li>Thesis supervision and support</li>
+                            <li>Career development mentoring</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">🚀</div>
+                        <h3>Doctoral Students (Ph.D.)</h3>
+                        <p>Develop expertise in responsible AI research while contributing to cutting-edge scholarship and policy.</p>
+                        <ul>
+                            <li>Comprehensive research training</li>
+                            <li>International collaboration opportunities</li>
+                            <li>Policy fellowship pathways</li>
+                            <li>Industry partnership access</li>
+                            <li>Academic career preparation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="opportunities-container" style="margin-top: 3rem;">
+                    <h3>What We're Looking For</h3>
+                    <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.7;">
+                        We seek students who are passionate about using technology for social good, committed to community-centered research approaches, and interested in interdisciplinary collaboration. Background in computer science, HCI, data science, or related fields preferred, but we welcome diverse academic backgrounds.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="application-cta">
+            <div class="container">
+                <h2>Ready to Make an Impact?</h2>
+                <p>Join us in advancing responsible AI research that serves communities and promotes justice in computing. Complete our lab member application to be considered for upcoming opportunities.</p>
+                <div>
+                    <a href="mailto:jcunningham@depaul.edu?subject=RAISE Lab Application - [Your Degree Level]" class="btn btn-primary">Complete Lab Member Application</a>
+                    <a href="mailto:jcunningham@depaul.edu?subject=RAISE Lab Information Request" class="btn btn-secondary">Ask Questions</a>
+                </div>
+                <div style="margin-top: 30px; font-size: 1rem; opacity: 0.9;">
+                    <p><strong>Application includes:</strong> Academic background, research interests, community engagement experience, and career goals</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--deep-charcoal); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Contact</h4>
+                    <p>Jay L. Cunningham, Ph.D.<br>
+                    Director, DePaul RAISE Lab<br>
+                    jcunningham@depaul.edu</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Location</h4>
+                    <p>DePaul University<br>
+                    College of Computing and Digital Media<br>
+                    Chicago, IL</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--justice-gold); margin-bottom: 1rem;">Connect</h4>
+                    <p>
+                        <a href="#" style="color: #ccc; text-decoration: none;">LinkedIn</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">Twitter</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">GitHub</a><br>
+                        <a href="#" style="color: #ccc; text-decoration: none;">Publications</a>
+                    </p>
+                </div>
+            </div>
+            <p>&copy; 2025 DePaul RAISE Lab. Computing for the Common Good.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.opportunity-card, .achievement, .director-content').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

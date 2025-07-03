@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - DePaul RAISE Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --raise-blue: #2E5BBA;
+            --community-green: #47A025;
+            --justice-gold: #F4A261;
+            --deep-charcoal: #333333;
+            --warm-white: #FEFEFE;
+            --earth-clay: #D4711C;
+            --policy-purple: #6B46C1;
+            --data-coral: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--deep-charcoal);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--raise-blue) 0%, var(--policy-purple) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--community-green), var(--justice-gold));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            position: relative;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--justice-gold);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--raise-blue) 0%, var(--policy-purple) 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,800 1000,1000"/><polygon fill="rgba(255,255,255,0.03)" points="0,800 1000,600 1000,800 0,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Research Question */
+        .research-question {
+            padding: 80px 0;
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .research-question h2 {
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 2rem;
+        }
+
+        .question-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid var(--community-green);
+            margin: 30px auto;
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .question-box p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--deep-charcoal);
+        }
+
+        /* Research Pillars */
+        .research-pillars {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .research-pillars h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 3rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-detailed {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pillar-detailed:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .pillar-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .pillar-1 { background: var(--data-coral); }
+        .pillar-2 { background: var(--community-green); }
+        .pillar-3 { background: var(--policy-purple); }
+        .pillar-4 { background: var(--earth-clay); }
+
+        .pillar-detailed h3 {
+            font-size: 1.5rem;
+            color: var(--deep-charcoal);
+        }
+
+        .pillar-detailed p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .pillar-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(46, 91, 186, 0.1);
+            color: var(--raise-blue);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .pillar-projects {
+            background: rgba(71, 160, 37, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .pillar-projects h4 {
+            color: var(--community-green);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .pillar-projects ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .pillar-projects li {
+            padding: 5px 0;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .pillar-projects li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--community-green);
+            font-weight: bold;
+        }
+
+        /* Current Projects */
+        .current-projects {
+            padding: 80px 0;
+            background: var(--warm-white);
+        }
+
+        .current-projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--community-green);
+        }
+
+        .project-card h3 {
+            color: var(--raise-blue);
+            margin-bottom: 15px;
+        }
+
+        .project-status {
+            display: inline-block;
+            background: var(--community-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-collaborators {
+            background: rgba(46, 91, 186, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .project-collaborators h4 {
+            color: var(--raise-blue);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Publications */
+        .publications {
+            padding: 80px 0;
+            background: var(--deep-charcoal);
+            color: white;
+        }
+
+        .publications h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--justice-gold);
+            margin-bottom: 3rem;
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .publications-section h3 {
+            color: var(--justice-gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .publication-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .publication-venue {
+            font-weight: 600;
+            color: var(--community-green);
+            font-size: 0.9rem;
+        }
+
+        .publication-title {
+            font-size: 1rem;
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+
+        .publication-status {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        /* Research Methods */
+        .research-methods {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .research-methods h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--raise-blue);
+            margin-bottom: 3rem;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .method-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: var(--community-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .method-card h3 {
+            color: var(--raise-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Call to Action */
+        .research-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--community-green) 0%, var(--raise-blue) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .research-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0 10px 10px 0;
+        }
+
+        .btn-primary {
+            background: var(--justice-gold);
+            color: var(--deep-charcoal);
+        }
+
+        .btn-primary:hover {
+            background: var(--earth-clay);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--raise-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+            .pillars-grid { grid-template-columns: 1fr; }
+            .publications-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-symbol" aria-label="RAISE Lab logo symbol"></div>
+                <div class="logo-text">
+                    <div class="logo-title">RAISE</div>
+                    <div class="logo-subtitle">Responsible AI Systems and Societal Experiences</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://raise.jaylcunningham.com/">Home</a></li>
+                <li><a href="https://raise.jaylcunningham.com/about.html">About</a></li>
+                <li><a href="https://raise.jaylcunningham.com/research.html" class="active">Research</a></li>
+                <li><a href="https://raise.jaylcunningham.com/community.html">Community</a></li>
+                <li><a href="https://raise.jaylcunningham.com/people.html">People</a></li>
+                <li><a href="https://raise.jaylcunningham.com/join.html">Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Research</h1>
+                    <p>Advancing responsible AI systems through community-centered research that addresses the technical, ethical, and societal challenges of artificial intelligence</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-question">
+            <div class="container">
+                <h2>Our Guiding Research Question</h2>
+                <div class="question-box">
+                    <p>
+                        How can we equitably design and evaluate human-centered AI/ML systems, particularly natural language technologies, to ensure they are fair, culturally competent, and reflective of the values and needs of all people—especially disproportionately affected users, while addressing the technical, ethical, and societal challenges inherent in AI/ML technologies?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-pillars">
+            <div class="container">
+                <h2>Research Pillars</h2>
+                <div class="pillars-grid">
+                    <div class="pillar-detailed">
+                        <div class="pillar-header">
+                            <div class="pillar-number pillar-1">1</div>
+                            <h3>Socio-technical Harm Measurement</h3>
+                        </div>
+                        <p>
+                            Developing community-informed frameworks for measuring AI harm that center affected communities' experiences and expertise, with particular focus on natural language technologies and culturally competent evaluation processes.
+                        </p>
+                        <div class="pillar-tags">
+                            <span class="tag">Natural Language Technologies</span>
+                            <span class="tag">Community Evaluation</span>
+                            <span class="tag">Cultural Competence</span>
+                            <span class="tag">Bias Detection</span>
+                        </div>
+                        <div class="pillar-projects">
+                            <h4>Current Projects:</h4>
+                            <ul>
+                                <li>Community-Informed LLM Evaluation Framework</li>
+                                <li>Participatory Algorithmic Auditing Tools</li>
+                                <li>ASR Performance Disparities for AAE Speakers</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-detailed">
+                        <div class="pillar-header">
+                            <div class="pillar-number pillar-2">2</div>
+                            <h3>Responsible Data Economy</h3>
+                        </div>
+                        <p>
+                            Creating ethical frameworks for data practices in AI ventures that ensure fairness and cultural competence, with community ownership and benefit from data used in AI systems, especially for disproportionately affected users.
+                        </p>
+                        <div class="pillar-tags">
+                            <span class="tag">Data Governance</span>
+                            <span class="tag">Community Ownership</span>
+                            <span class="tag">Financial Inclusion</span>
+                            <span class="tag">AI Ventures</span>
+                        </div>
+                        <div class="pillar-projects">
+                            <h4>Current Projects:</h4>
+                            <ul>
+                                <li>AmendAI Ethical Data Certification Platform</li>
+                                <li>DataCommons Community-Centered Governance</li>
+                                <li>Financial Materiality of Responsible AI Practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-detailed">
+                        <div class="pillar-header">
+                            <div class="pillar-number pillar-3">3</div>
+                            <h3>Global South AI Equity</h3>
+                        </div>
+                        <p>
+                            Addressing AI inequities affecting Global South communities through hyperlocal language technologies and international research partnerships that preserve cultural heritage while advancing technological capability.
+                        </p>
+                        <div class="pillar-tags">
+                            <span class="tag">Language Preservation</span>
+                            <span class="tag">International Collaboration</span>
+                            <span class="tag">Cultural Alignment</span>
+                            <span class="tag">Policy Influence</span>
+                        </div>
+                        <div class="pillar-projects">
+                            <h4>Current Projects:</h4>
+                            <ul>
+                                <li>Ghanaian Language Speech Recognition (with UG)</li>
+                                <li>Hyperlocal LLM Cultural Sensitivity Auditing</li>
+                                <li>Global Community Advisory Board Network</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-detailed">
+                        <div class="pillar-header">
+                            <div class="pillar-number pillar-4">4</div>
+                            <h3>Human-Centered AI & Technology Design</h3>
+                        </div>
+                        <p>
+                            Investigating design methodologies, interaction paradigms, and implementation strategies for intelligent systems that are meaningfully integrated into human experiences and environmental contexts, prioritizing user agency and contextual appropriateness.
+                        </p>
+                        <div class="pillar-tags">
+                            <span class="tag">Interaction Design</span>
+                            <span class="tag">User Experience</span>
+                            <span class="tag">Design Methods</span>
+                            <span class="tag">Contextual Computing</span>
+                        </div>
+                        <div class="pillar-projects">
+                            <h4>Current Projects:</h4>
+                            <ul>
+                                <li>Participatory AI Interface Design</li>
+                                <li>Community-Centered Design Toolkits</li>
+                                <li>Contextual AI System Implementation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="current-projects">
+            <div class="container">
+                <h2>Featured Research Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-status">Active</div>
+                        <h3>Community Advisory Board Model Implementation</h3>
+                        <p>
+                            Developing and documenting the Community Advisory Board methodology for participatory computing research, with case studies from UW HCDE Black CAB and international applications.
+                        </p>
+                        <div class="project-collaborators">
+                            <h4>Key Collaborators:</h4>
+                            <p>UW HCDE Black Community Advisory Board, Dr. Julie Kientz, Dr. Daniela Rosner</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" style="border-left-color: var(--policy-purple);">
+                        <div class="project-status" style="background: var(--policy-purple);">Active</div>
+                        <h3>Equitable Speech Recognition for Ghanaian Languages</h3>
+                        <p>
+                            International collaboration developing speech recognition systems for Akan, Ga, Twi, and Ikposo languages, with 5,000+ hours of collected speech data and community-centered evaluation approaches.
+                        </p>
+                        <div class="project-collaborators">
+                            <h4>Key Collaborators:</h4>
+                            <p>Prof Isaac Wiafe (University of Ghana), Mark Atta Mensah, UG HCI Lab Team</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" style="border-left-color: var(--data-coral);">
+                        <div class="project-status" style="background: var(--data-coral);">Active</div>
+                        <h3>AmendAI: Ethical Data Governance Platform</h3>
+                        <p>
+                            Building infrastructure for ethical data governance and AI dataset certification, specifically designed for generative AI and ML systems with community consent frameworks.
+                        </p>
+                        <div class="project-collaborators">
+                            <h4>Key Collaborators:</h4>
+                            <p>AmendAI Team, Community Data Partners, Industry Stakeholders</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" style="border-left-color: var(--earth-clay);">
+                        <div class="project-status" style="background: var(--earth-clay);">Planning</div>
+                        <h3>Chicago Civic Technology Initiative</h3>
+                        <p>
+                            Developing partnerships with Chicago community organizations and city government to create responsible AI solutions for local challenges while building workforce development pathways.
+                        </p>
+                        <div class="project-collaborators">
+                            <h4>Key Partners:</h4>
+                            <p>DePaul CDM, Chicago Community Organizations, City of Chicago (planned)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="publications">
+            <div class="container">
+                <h2>Publications & Research Outputs</h2>
+                <div class="publications-grid">
+                    <div>
+                        <h3>Recent Publications</h3>
+                        <div class="publication-item">
+                            <div class="publication-venue">ACL 2024</div>
+                            <div class="publication-title">Understanding the Impacts of Language Technologies' Performance Disparities on African American Language Speakers</div>
+                            <div class="publication-status">Published</div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-venue">CSCW 2025</div>
+                            <div class="publication-title">Towards Equitable Community-Industry Collaborations: Understanding Nonprofits' Experiences with Tech Companies</div>
+                            <div class="publication-status">Accepted</div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-venue">ACM TOCHI 2023</div>
+                            <div class="publication-title">On the Grounds of Solutionism: Ontologies of Blackness and HCI</div>
+                            <div class="publication-status">Published</div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-venue">DIS 2022</div>
+                            <div class="publication-title">The Cost of Culture: An Analysis of Cash App and the Financial Inclusion of Black American Communities</div>
+                            <div class="publication-status">Published</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>Upcoming Submissions</h3>
+                        <div class="publication-item">
+                            <div class="publication-venue">CHI 2026</div>
+                            <div class="publication-title">The Community Advisory Board Model for Participatory Computing Research</div>
+                            <div class="publication-status">In Preparation</div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-venue">FAccT 2025</div>
+                            <div class="publication-title">Responsible Automated Speech Recognition: A Scoping Literature Review</div>
+                            <div class="publication-status">Under Review</div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-venue">FAccT 2025</div>
+                            <div class="publication-title">Advancing Data Equity: Practitioner Responsibility and Representation in NLP Data Practices</div>
+                            <div class="publication-status">Under Review</div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-venue">AIES 2026</div>
+                            <div class="publication-title">Techno-Realist Innovation Framework for Human-Centered Technology Research</div>
+                            <div class="publication-status">Planned</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-methods">
+            <div class="container">
+                <h2>Research Methodologies</h2>
+                <div class="methods-grid">
+                    <div class="method-card">
+                        <div class="method-icon">🤝</div>
+                        <h3>Participatory Research</h3>
+                        <p>Community-based participatory research approaches that center affected communities as co-researchers and decision-makers in the research process.</p>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">📊</div>
+                        <h3>Mixed-Methods Approaches</h3>
+                        <p>Combining quantitative analysis, qualitative investigation, and community feedback to create comprehensive understanding of AI system impacts.</p>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">🎨</div>
+                        <h3>Co-Design & Prototyping</h3>
+                        <p>Collaborative design processes that involve community partners in creating and iterating on AI system interfaces and experiences.</p>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">⚖️</div>
+                        <h3>Policy Analysis</h3>
+                        <p>Examining regulatory frameworks, governance structures, and policy implications of AI systems to inform responsible development practices.</p>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">🔍</div>
+                        <h3>Algorithmic Auditing</h3>
+                        <p>Systematic evaluation of AI system performance across different communities, with particular attention to bias detection and cultural competence.</p>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">🌍</div>
+                        <h3>Cross-Cultural Research</h3>
+                        <p>International collaboration approaches that respect cultural differences while building global frameworks for responsible AI development.</p>
+                    </div>
+                </div>
+            
